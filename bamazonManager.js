@@ -186,24 +186,25 @@ const addProd = () => {
                     return true;
                 }
             }
-            ]).then(function (ans) {
-                let newPrice = parseFloat(ans.price);
-                let newStock = parseInt(ans.stock);
+        ]
+    ).then(function (ans) {
+        let newPrice = parseFloat(ans.price);
+        let newStock = parseInt(ans.stock);
 
-                connection.query('INSERT INTO products SET ?', {
-                    product_name: ans.item,
-                    department_name: ans.dept,
-                    price: newPrice,
-                    stock_quantity: newStock
+        connection.query('INSERT INTO products SET ?', {
+            product_name: ans.item,
+            department_name: ans.dept,
+            price: newPrice,
+            stock_quantity: newStock
 
-                }, function (err) {
-                    if (err) {
-                        throw err;
-                    } else {
-                        console.log(`Your new item has been successfully added to the inventory.`);
-                        start();
-                    }
-                });
-            });
+        }, function (err) {
+            if (err) {
+                throw err;
+            } else {
+                console.log(`Your new item has been successfully added to the inventory.`);
+                start();
+            }
+        });
+    });
 
 };
